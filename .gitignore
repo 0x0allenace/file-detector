@@ -1,0 +1,35 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# VSCode and IDE settings
+.vscode/
+.idea/
+
+# Distribution and build files
+build/
+dist/
+*.egg-info/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PyInstaller / packaging output
+*.spec
+
+# Local test files
+test_*.py
