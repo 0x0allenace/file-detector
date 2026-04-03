@@ -2,70 +2,77 @@
 **Lightweight file type detector for reverse engineering, DFIR, and malware analysis.**
 
 ## Overview
-`file_detector.py` is a simple Python script that identifies the real type of a file by reading its **magic bytes** — the unique signatures stored at the beginning of most binary files.
+`file_detector.py` is a lightweight Python tool that identifies the true file type of a file by analyzing its magic bytes (binary signatures), rather than relying on file extensions.
 
-This helps reverse engineers, forensic analysts, and cybersecurity learners quickly identify file formats (EXE, ELF, ZIP, PDF, etc.) — even when extensions are missing or intentionally disguised.
+This makes it especially useful in DFIR, malware analysis, and reverse engineering, where file extensions are often misleading or intentionally manipulated.
+
 
 
 ## Features
-- ✅ Detects **EXE**, **ELF**, **ZIP**, and **PDF** files  
-- ✅ Uses **magic byte matching** (not file extensions)  
-- ✅ Displays results in color-coded output with `termcolor`  
-- ✅ Safe to use for **malware triage and static analysis**  
-- ✅ Easily extendable — just add more signatures  
+- ✅ Detects common file types: **EXE**, **ELF**, **ZIP**, and **PDF** files  
+- ✅ Uses **magic byte signature** analysis (not file extensions)  
+- ✅ Color-coded terminal output using `termcolor`  
+- ✅ Safe for **malware triage and static analysis**  
+- ✅ Easily extendable with additional file signatures
 
+## Installation
+```bash
+git clone https://github.com/0x0allenace/file-detector.git
+cd file-detector
+pip install termcolor
+```
 
-## Example Usage
+## Usage
 ```bash
 python3 file_detector.py
+```
+
+## Example
+```bash
 Enter file name: invoice.exe.zip
 Found file type: ZIP
 ```
 
-If the file type isn’t recognized:
-```bash
+If unknown:
+```text
 File type could not be identified
 ```
 
-## Why It’s Useful for Reverse Engineering
-When analyzing unknown binaries, you can’t always trust the file extension.  
-Attackers often rename `.exe` files as `.txt` or `.zip` to evade detection.  
-This tool lets you **peek into the binary header** to verify what the file truly is — safely and quickly, without executing anything.
+## How It Works
+
+Files contain unique identifiers called magic bytes at the beginning of their binary structure.
+
+| File Type | Signature (Hex) |
+|----------|------------------|
+| EXE      | `4D 5A (MZ)`     |
+| ELF      | `7F 45 4C 46`    |
+| ZIP      | `50 4B 03 04`    |
+| PDF      | `25 50 44 46 2D` |
+
+## Use Cases
 
 Perfect for:
-- Malware triage  
-- Binary research  
-- DFIR workflows  
-- Forensic file identification  
+- Malware triage and safe file inspection  
+- Digital forensics investigations  
+- Reverse engineering workflows  
+- Suspicious file verification
+- Security lab environments  
 
-## 🧩 How It Works
-Each file type has a *magic byte sequence* — a small identifier stored at the start of the file.  
-Example:
-- **EXE:** `4D 5A` (`MZ`)  
-- **ELF:** `7F 45 4C 46`  
-- **ZIP:** `50 4B 03 04`  
-- **PDF:** `25 50 44 46 2D`
+## Project Structure
 
-The script reads the first few bytes, compares them against known signatures, and prints the matching file type.
-
-## Requirements
-- Python 3.x  
-- `termcolor` module
-
-Install with:
-```bash
-pip install termcolor
-```
+file-detector/
+├── file_detector.py
+└── README.md
 
 ## Future Enhancements
 - [ ] Add more file signatures (PNG, JPG, DOCX, etc.)  
-- [ ] Generate SHA256 hashes for each file  
-- [ ] Integrate into a DFIR automation toolkit  
-- [ ] Optional GUI version with drag & drop  
+- [ ] Generate file hashes (SHA256, MD5) 
+- [ ] Integrate into a DFIR automation pipeline 
+- [ ] Build a GUI version (drag & drop support)  
 
 ## 👨🏾‍💻 Author  
 **Allen Ace**  
-Cybersecurity Enthusiast | Reverse Engineering & DFIR Learner  
+Cybersecurity Enthusiast | Reverse Engineering & DFIR | Machine Learning 
 
 📍 **LinkedIn:** [linkedin.com/in/allen-ace-soc-analyst](https://www.linkedin.com/in/allen-ace-soc-analyst/)  
 🐙 **GitHub:** [github.com/0x0allenace](https://github.com/0x0allenace)  
