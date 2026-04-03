@@ -59,10 +59,11 @@ Perfect for:
 - Security lab environments  
 
 ## Project Structure
-
+```text
 file-detector/
 ├── file_detector.py
 └── README.md
+```
 
 ## Future Enhancements
 - [ ] Add more file signatures (PNG, JPG, DOCX, etc.)  
