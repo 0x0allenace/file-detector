@@ -61,8 +61,11 @@ Perfect for:
 ## Project Structure
 ```text
 file-detector/
+│
 ├── file_detector.py
-└── README.md
+├── README.md
+├── .gitignore
+└── LICENSE
 ```
 
 ## Future Enhancements
